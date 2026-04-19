@@ -22,7 +22,7 @@ venv\Scripts\activate
 pip install -e .
 python -m TicTacToePy.main
 ```
-- the game board will appear, the first turn will be of O side. play as instruct by the diagram that is show on the screen, and play until any side win!!! <small>or tie I don't care.</small>
+- the game board will appear! with `: ` as a wait of input!
 
 ## How to play
 - Reccomend to use numpad to play
@@ -33,7 +33,7 @@ python -m TicTacToePy.main
 1|2|3
 ```
 - turn start at 0, but it wont show in the display normally, the turn is tracked in the game class.
-- normal tic-tac-toe rule with Game class, 3 in a row to win.
+- normal tic-tac-toe rule with Game class, 3 in a row to win. Have fun trying to win and lose! <small>or tie I don't care.</small>
 
 ## How this work?
 > do not be dissapoint but I just make all of this in one shot of coffee...
