@@ -15,11 +15,16 @@ class Board:
         
         self.cells[slot] = piece + 1
 
-    def CheckFilled(self, slot : int):
+    def CheckCellFilled(self, slot : int):
         if not (0 <= slot <= size*size - 1):
             raise IndexError
         
         return self.cells[slot] != 0
+    
+    def CheckBoardFilled(self):
+        pieces = set(self.cells)
+        
+        return 0 not in pieces
 
     def Print(self):
         pieceMap = {
@@ -36,3 +41,13 @@ class Board:
             result += '\n' if i != 0 else ''
 
         return result
+    
+    def CheckPattern(self, *pattern):
+        pickedCells = [self.cells[i] for i in pattern]
+
+        pieces = set(pickedCells)
+
+        if len(pieces) == 1:
+            return True, pieces.pop()
+
+        return False, None

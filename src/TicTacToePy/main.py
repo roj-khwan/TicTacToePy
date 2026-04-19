@@ -17,5 +17,13 @@ def main():
         game.Run(move)
         game.Display()
 
+        win, piece = game.CheckWin()
+        if win:
+            print(f'Player {piece} Wins!')
+            break
+        elif game.board.CheckBoardFilled():
+            print(f'Ties!!!')
+            break
+
 if __name__ == "__main__":
     main()

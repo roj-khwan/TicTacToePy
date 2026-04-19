@@ -1,12 +1,11 @@
 from TicTacToePy.board import Board
 
 class Game():
-    turn = 0
-    side = 0
-    board = None
-
+    
     def __init__(self):
         self.board = Board()
+        self.turn = 0 # counter
+        self.side = 0 # 0 : O | 1 : X
 
     def Display(self):
         print(self.board.Print())
@@ -36,6 +35,31 @@ class Game():
 
         move = move - 1 # turn 1 - 9 to 0 - 8
 
-        if self.board.CheckFilled(move): return False, "cell filled"
+        if self.board.CheckCellFilled(move): return False, "cell filled"
 
         return True, move
+    
+    def CheckWin(self):
+        patterns = [
+            [0, 1, 2], [3, 4, 5], [6, 7, 8],
+            [0, 3, 6], [1, 4, 7], [2, 5, 8],
+            [0, 4, 8], [2, 4, 6]
+        ]
+
+        for pattern in patterns:
+            align, piece = self.board.CheckPattern(*pattern)
+
+            if piece != 0 and align:
+                return True, piece
+            
+        return False, None
+
+    def CheckSideWin(self, side : int):
+        win, piece = self.CheckWin()
+        
+        return win and piece == side + 1
+    
+    def Reset(self):
+        self.board = Board()
+        self.turn = 0 # counter
+        self.side = 0 # 0 : O | 1 : X
